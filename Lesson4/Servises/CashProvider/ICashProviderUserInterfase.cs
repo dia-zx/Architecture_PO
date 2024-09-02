@@ -8,6 +8,6 @@ namespace Lesson4.Servises.CashProvider
 {
     internal interface ICashProviderUserInterfase
     {
-        public bool Authorization(string hashPassword);
+        public bool Authorization(string Password);
     }
 }
