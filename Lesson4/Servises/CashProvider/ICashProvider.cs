@@ -11,5 +11,6 @@ namespace Lesson4.Servises.CashProvider
     {
         public bool GetCashFromUser(decimal amount, IUser user);
         public int GetBankAccount();
+        public void SetBankAccount(int bankAccount);
     }
 }
