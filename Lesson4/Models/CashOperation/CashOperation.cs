@@ -27,5 +27,7 @@ namespace Lesson4.Models.CashOperation
         public int GetId() => _id;
 
         public int GetUserId() => _userId;
+
+        public override string ToString() => $"ID: {_id}, UserId: {_userId}, Date: {_date}, amount: {_amount}";
     }
 }

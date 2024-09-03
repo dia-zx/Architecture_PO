@@ -1,5 +1,6 @@
 ﻿using Lesson4.Models.CashOperation;
 using Lesson4.Models.User;
+using Lesson4.Servises.UserProvider;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace Lesson4.Servises.CashProvider
 {
     internal class CashProvider : ICashProvider
     {
-        private List<ICashOperation> cashOperations = [];
+        private List<ICashOperation> _cashOperations = [];
         private int _bankAccount;
 
         public CashProvider(int bankAccount)
@@ -23,7 +24,8 @@ namespace Lesson4.Servises.CashProvider
             Console.WriteLine("Введите пароль");
             string? pass = Console.ReadLine();
             if (pass == null) return false;
-            return PassToHash(pass) == user.GetHashPassword();
+
+            return UserProvider.UserProvider.CalculateHash(pass) == user.GetHashPassword();
         }
 
 
@@ -33,20 +35,14 @@ namespace Lesson4.Servises.CashProvider
             // сдесь идет обращенин к сервису платежей (считаем что платеж прошел)
             bool isOK = true;
             if(!isOK) return false;
-            cashOperations.Add(new CashOperation(user.GetId(), amount));
+            _cashOperations.Add(new CashOperation(user.GetId(), amount));
             return true;
         }
 
-        private string PassToHash(string password) {
-         StringBuilder stringBuilder = new StringBuilder();
-            foreach (char c in password)
-            {
-                stringBuilder.Append(c ^ 0x0fa5e);
-            }
-            return stringBuilder.ToString();
-        }
 
         public int GetBankAccount()=> _bankAccount;
         public void SetBankAccount(int bankAccount) =>_bankAccount = bankAccount;
+
+        public List<ICashOperation> GetOperations() => _cashOperations.ToList();
     }
 }

@@ -11,9 +11,19 @@ namespace Lesson4.Servises.UserProvider
     {
         private List<IUser> _UsersRepo = [];
 
-        public IUser CreateUser(string name, string hashPassword)
+        public static string CalculateHash(string password)
         {
-            IUser user = new User(name, hashPassword);
+            StringBuilder stringBuilder = new StringBuilder();
+            foreach (char c in password)
+            {
+                stringBuilder.Append(c ^ 0x0fa5e);
+            }
+            return stringBuilder.ToString();
+        }
+
+        public IUser CreateUser(string name, string password)
+        {
+            IUser user = new User(name, CalculateHash(password));
             _UsersRepo.Add(user);
             return user;
         }
@@ -39,5 +49,7 @@ namespace Lesson4.Servises.UserProvider
             }
             throw new ArgumentOutOfRangeException();
         }
+
+        public List<IUser> GetUsers()=>_UsersRepo.ToList();
     }
 }

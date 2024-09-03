@@ -40,6 +40,9 @@ namespace Lesson4.Servises.TicketProvider
             throw new ArgumentOutOfRangeException();
         }
 
+        public List<ITicket> GetTickets()=>_ticketsRepo.ToList();
+        
+
         public List<ITicket> GetTicketsByUser(int userId)
         {
             List < ITicket > tickets = new List<ITicket>();

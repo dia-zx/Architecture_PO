@@ -16,6 +16,7 @@ namespace Lesson4.Models.Ticket
             _userId = userId;
             _Date = DateTime.Now;
             _RouteNumber = routeNumber;
+            _price = price;
         }
 
         public DateTime GetDate() => _Date;

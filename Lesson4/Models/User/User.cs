@@ -26,6 +26,7 @@ namespace Lesson4.Models.User
 
         public string GetName() => _Name;
         public void SetName(string name) => _Name = name;
+        public override string ToString() => $"Id: {_Id}, Name: {_Name}, CardNo: {_CardNumber}";
 
         private static int _NextId = 0;
         private int _CardNumber = 0;

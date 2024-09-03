@@ -11,6 +11,7 @@ namespace Lesson4.Servises.TicketProvider
     {
         public ITicket CreateTicket(int userId, int place, decimal price, int routeNumber);
         public List<ITicket> GetTicketsByUser(int userId);
+        public List<ITicket> GetTickets();
         public void DeleteTicket(int id);
         public ITicket GetTicket(int id);
     }
