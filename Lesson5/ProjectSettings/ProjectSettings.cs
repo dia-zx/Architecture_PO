@@ -13,9 +13,9 @@ namespace Lesson5.ProjectSettings
             _provider = new FileProvider.FileProvider(); // сдесь используем файловое хранилище, однако можно подключить другое...
         }
         private IProvider _provider;
-        public string Path { get; set; }
+        public string Path { get; set; } = string.Empty;
         public int Settings1 { get; set; }
-        public string Settings2 { get; set; }
+        public string Settings2 { get; set; } = string.Empty;
 
         public void Load()
         {

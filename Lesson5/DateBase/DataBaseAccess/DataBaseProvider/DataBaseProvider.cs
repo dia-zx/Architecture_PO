@@ -20,7 +20,8 @@ namespace Lesson5.DateBase.DataBaseAccess.DataBaseProvider
 
         public void Load()
         {
-            if (_projectSettings.Path == string.Empty) return;            
+            if (_projectSettings.Path == string.Empty) return;
+            if (_projectSettings.Path == null) return;
             _dataList.Clear();
             Console.WriteLine($"...База данных {_GetDBPath()} загружена.");
         }
