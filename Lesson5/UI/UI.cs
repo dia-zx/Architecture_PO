@@ -1,4 +1,7 @@
-﻿using Lesson5.ProjectSettings;
+﻿using Lesson5.BusinessLogicalLayer;
+using Lesson5.DateBase.DataBaseAccess;
+using Lesson5.DateBase.DataBaseAccess.DataBaseProvider;
+using Lesson5.ProjectSettings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +13,15 @@ namespace Lesson5.UI
     internal class UI : IUI
     {
         private IProjectSettings _projectSettings;
+        private IBusinessLogicalLayer _logicalLayer;
+        private IDataBaseAccess _dataBaseAccess;
+        private IDataBaseProvider _dataBaseProvider;
         public void Init()
         {
             _projectSettings = new ProjectSettings.ProjectSettings();
+            _dataBaseProvider = new DataBaseProvider(_projectSettings);
+            _dataBaseAccess = new DataBaseAccess(_dataBaseProvider);
+            _logicalLayer = new BusinessLogicalLayer.BusinessLogicalLayer(_dataBaseAccess);
         }
 
         public void Start()
@@ -93,7 +102,12 @@ namespace Lesson5.UI
 
         private void MenuShowObjects()
         {
-
+            Console.WriteLine("\n******** Объекты проекта *********");
+            foreach(var item in _logicalLayer.GetAll()) {
+                Console.WriteLine(item);
+            }
+            Console.WriteLine("Нажмите клавишу <Enter>.");
+            Console.ReadLine();
         }
     }
 }

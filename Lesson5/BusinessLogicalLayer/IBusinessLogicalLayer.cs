@@ -1,4 +1,5 @@
 ﻿using Lesson5.Model3D;
+using Lesson5.Model3D.Entity;
 using Lesson5.Model3D.Point3D;
 using Lesson5.Model3D.Texture;
 using System;
@@ -15,6 +16,7 @@ namespace Lesson5.BusinessLogicalLayer
         public ReadOnlyCollection<Texture> GetAllTextures();
         public ReadOnlyCollection<Point3D> GetAllPoints();
         public ReadOnlyCollection<Model3D.Model3D> GetAllModel3Ds();
+        public LinkedList<IEntity> GetAll();
 
         public void RenderModel(Model3D.Model3D model);
 

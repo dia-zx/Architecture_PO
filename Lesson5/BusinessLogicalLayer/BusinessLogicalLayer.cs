@@ -1,5 +1,6 @@
 ﻿using Lesson5.DateBase.DataBaseAccess;
 using Lesson5.Model3D;
+using Lesson5.Model3D.Entity;
 using Lesson5.Model3D.Point3D;
 using Lesson5.Model3D.Texture;
 using System;
@@ -37,5 +38,7 @@ namespace Lesson5.BusinessLogicalLayer
         {
             Console.WriteLine($"Rendering model: [{model}]");
         }
+
+        public LinkedList<IEntity> GetAll()=> _dataBaseAccess.GetAll();
     }
 }
