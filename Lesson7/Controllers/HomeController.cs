@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Lesson7.Models;
+using Lesson7.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Lesson7.Controllers
@@ -7,15 +8,17 @@ namespace Lesson7.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private IInMemoryToDoCollection _toDoCollection;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IInMemoryToDoCollection toDoCollection, ILogger<HomeController> logger)
         {
             _logger = logger;
+            _toDoCollection = toDoCollection;
         }
 
         public IActionResult Index()
         {
-            return View();
+            return View(_toDoCollection.GetAll());
         }
 
         public IActionResult About()

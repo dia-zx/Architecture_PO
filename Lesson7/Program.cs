@@ -1,3 +1,5 @@
+using Lesson7.Services;
+
 namespace Lesson7
 {
     public class Program
@@ -8,6 +10,8 @@ namespace Lesson7
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddSingleton<IInMemoryToDoCollection, InMemoryToDoCollection>();
 
             var app = builder.Build();
 

@@ -13,7 +13,7 @@ public class ToDoItem
         DeadLine = deadline;
         IsDone = isdone;
     }
-    public int ID { get; }
+    public int ID { get=>_id; }
     public string Name { get; set; }
     public string Description { get; set; }
     public int Priority { get; set; }
