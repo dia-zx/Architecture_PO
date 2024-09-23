@@ -7,9 +7,11 @@ namespace Lesson10;
 
 public class Program
 {
+    public static string ConnectionString = "Data Source=data.db";
+
     public static void Main(string[] args)
     {
-        //CreateDB("Data Source=data.db");
+        //CreateDB(ConnectionString);
         var builder = WebApplication.CreateBuilder(args);
 
         // Add services to the container.

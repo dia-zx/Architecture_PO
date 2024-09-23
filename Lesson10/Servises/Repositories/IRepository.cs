@@ -5,9 +5,9 @@ namespace Lesson10.Servises.Repositories
     public interface IRepository<T, TId>
     {
         int Add(T item);
-        int Update(T item, TId id);
+        int Update(T item);
         T GetById(TId id);
-        Collection<T> GetAll();
+        List<T> GetAll();
         int Delete(TId id);
     }
 }
