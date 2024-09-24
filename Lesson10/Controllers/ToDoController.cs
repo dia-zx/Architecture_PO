@@ -1,36 +1,51 @@
-using Lesson10.Models;
-using Lesson10.Services;
-using Microsoft.AspNetCore.Http.HttpResults;
+﻿using Lesson10.Servises.Repositories.ToDoReRepository;
+using Lesson10.Servises.Repositories.ToDoReRepository.Model;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Lesson10.Controllers
 {
+    [Route("ToDo/[controller]")]
     [ApiController]
-    [Route("[controller]")]
     public class ToDoController : ControllerBase
     {
         private readonly ILogger<ToDoController> _logger;
-        private IInMemoryToDoCollection _toDoCollection;
+        private readonly IToDoRepository _repository;
 
-        public ToDoController(IInMemoryToDoCollection ToDoCollection, ILogger<ToDoController> logger)
+        public ToDoController(ILogger<ToDoController> logger, IToDoRepository toDoReRepository)
         {
-            _toDoCollection = ToDoCollection;
             _logger = logger;
+            _repository = toDoReRepository;
         }
 
-        [HttpGet(Name = "GetToDoList")]
-        public IActionResult Get() =>  Ok(_toDoCollection.GetAll());
-
-        [HttpPost(Name ="AddItem")]
-        public IActionResult Add([FromQuery] string name, [FromQuery] int priority, [FromQuery] DateTime deadLine, [FromQuery] bool isDone)
+        [HttpGet(Name = "GetAll")]
+        public IActionResult GetAll()
         {
-            ToDoItem item = new(name, "", priority, deadLine, isDone);
-            _toDoCollection.Add(item);
-            return Ok();
+            return Ok(_repository.GetAll());
         }
 
-        [HttpDelete(Name = "Delete")]
-        public IActionResult Delete([FromQuery]int id)=>  Ok(_toDoCollection.Remove(id));
-        
+        [HttpPost(Name = "GetById")]
+        public IActionResult GetById([FromQuery] int id)
+        {
+            return Ok(_repository.GetById(id));
+        }
+
+        [HttpDelete(Name ="Delete")]
+        public IActionResult Get([FromQuery] int id)
+        {               
+            return Ok(_repository.Delete(id));
+        }
+
+        [HttpPut(Name = "Add")]
+        public IActionResult Add([FromBody]ToDo todo)
+        {
+            return Ok(_repository.Add(todo));
+        }
+
+        [HttpPatch (Name = "Update")]
+        public IActionResult Update([FromBody] ToDo todo)
+        {
+            return Ok(_repository.Update(todo));
+        }
     }
 }

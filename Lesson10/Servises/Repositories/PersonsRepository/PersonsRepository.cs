@@ -6,7 +6,7 @@ using System.Collections.ObjectModel;
 
 namespace Lesson10.Servises.Repositories.PersonsRepository;
 
-public class PersonsRepository : IRepository<Person, int>
+public class PersonsRepository : IPersonsRepository
 {
     public int Add(Person item)
     {

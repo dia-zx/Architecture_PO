@@ -1,11 +1,10 @@
 ﻿using Lesson10.Servises.Repositories.PersonsRepository.Model;
 using Lesson10.Servises.Repositories.ToDoReRepository.Model;
 using Microsoft.Data.Sqlite;
-using System.Collections.ObjectModel;
 
 namespace Lesson10.Servises.Repositories.ToDoReRepository
 {
-    public class ToDoReRepository : IRepository<ToDo, int>
+    public class ToDoRepository : IToDoRepository
     {
         public int Add(ToDo item)
         {
@@ -50,7 +49,7 @@ namespace Lesson10.Servises.Repositories.ToDoReRepository
             command.Parameters.AddWithValue("@ToDoId", id);
             command.Prepare();
             var reader = command.ExecuteReader();
-            
+
             while (reader.Read())
             {
                 ToDo item = new()
@@ -62,7 +61,7 @@ namespace Lesson10.Servises.Repositories.ToDoReRepository
                     Deadline = DateTime.UnixEpoch.AddTicks(reader.GetInt32(4)),
                     Isdone = reader.GetInt32(5) != 0,
                 };
-               return item;
+                return item;
             }
             return null;
         }
@@ -80,7 +79,7 @@ namespace Lesson10.Servises.Repositories.ToDoReRepository
             command.Parameters.AddWithValue("@Description", item.Description);
             command.Parameters.AddWithValue("@Priority", item.Priority);
             command.Parameters.AddWithValue("@Deadline", item.Deadline.Ticks - DateTime.UnixEpoch.Ticks);
-            if(item.Isdone)
+            if (item.Isdone)
                 command.Parameters.AddWithValue("@Isdone", 1);
             else
                 command.Parameters.AddWithValue("@Isdone", 0);
