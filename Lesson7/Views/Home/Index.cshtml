@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Список дел - страница 1";
+    
+}
+@model IEnumerable<ToDoItem>
+
+
+<div class="text-center">
+    <h1 class="display-4">Список дел</h1>
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Название</th>
+                <th>Описание</th>
+                <th>Приоритет</th>
+                <th>Окончание</th>
+                <th>Выполнено</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ID</td>
+                    <td>@item.Name </td>
+                    <td>@item.Description </td>
+                    <td>@item.Priority</td>
+                    <td>@item.DeadLine.ToString("g")</td>
+                    <td> <input type="checkbox" checked="@item.IsDone" /> </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>
