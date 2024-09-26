@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Lesson11.Controllers
 {
-    [Route("ToDo/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class ToDoController : ControllerBase
     {
@@ -18,32 +18,32 @@ namespace Lesson11.Controllers
             _repository = toDoReRepository;
         }
 
-        [HttpGet(Name = "GetAll")]
-        public IActionResult GetAll()
+        [HttpGet("GetAll")]
+        public ActionResult<List<ToDo>> GetAll()
         {
             return Ok(_repository.GetAll());
         }
 
-        [HttpPost(Name = "GetById")]
-        public IActionResult GetById([FromQuery] int id)
+        [HttpPost("GetById")]
+        public ActionResult<ToDo> GetById([FromQuery] int id)
         {
             return Ok(_repository.GetById(id));
         }
 
-        [HttpDelete(Name ="Delete")]
-        public IActionResult Get([FromQuery] int id)
+        [HttpDelete("Delete")]
+        public ActionResult<int> Get([FromQuery] int id)
         {               
             return Ok(_repository.Delete(id));
         }
 
-        [HttpPut(Name = "Add")]
-        public IActionResult Add([FromBody]ToDo todo)
+        [HttpPut("Add")]
+        public ActionResult<int> Add([FromBody]ToDo todo)
         {
             return Ok(_repository.Add(todo));
         }
 
-        [HttpPatch (Name = "Update")]
-        public IActionResult Update([FromBody] ToDo todo)
+        [HttpPatch ("Update")]
+        public ActionResult<int> Update([FromBody] ToDo todo)
         {
             return Ok(_repository.Update(todo));
         }

@@ -1,7 +1,6 @@
 
-using Lesson10.Services;
-using Lesson10.Servises.Repositories.PersonsRepository;
-using Lesson10.Servises.Repositories.ToDoReRepository;
+using Lesson11.Servises.Repositories.PersonsRepository;
+using Lesson11.Servises.Repositories.ToDoReRepository;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.Data.Sqlite;
 
@@ -21,7 +20,6 @@ public class Program
         builder.Services.AddControllers();
         builder.Services.AddScoped<IToDoRepository, ToDoRepository>();
         builder.Services.AddScoped<IPersonsRepository, PersonsRepository>();
-        builder.Services.AddSingleton<IInMemoryToDoCollection, InMemoryToDoCollection>();
 
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();

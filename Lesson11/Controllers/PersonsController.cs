@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Lesson11.Controllers
 {
-    [Route("Persons/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class PersonsController : ControllerBase
     {
@@ -19,32 +19,32 @@ namespace Lesson11.Controllers
             _repository = repository;
         }
 
-        [HttpGet]
-        public IActionResult GetAll()
+        [HttpGet("GetAll")]
+        public ActionResult<List<Person>> GetAll()
         {
             return Ok(_repository.GetAll());
         }
 
-        [HttpPost]
-        public IActionResult GetById([FromQuery] int id)
+        [HttpPost("GetById")]
+        public ActionResult<Person> GetById([FromQuery] int id)
         {
             return Ok(_repository.GetById(id));
         }
 
-        [HttpDelete]
-        public IActionResult Get([FromQuery] int id)
+        [HttpDelete("Get")]
+        public ActionResult<int> Get([FromQuery] int id)
         {
             return Ok(_repository.Delete(id));
         }
 
-        [HttpPut]
-        public IActionResult Add([FromBody] Person person)
+        [HttpPut("Add")]
+        public ActionResult<int> Add([FromBody] Person person)
         {
             return Ok(_repository.Add(person));
         }
 
-        [HttpPatch]
-        public IActionResult Update([FromBody] Person person)
+        [HttpPost("Update")]
+        public ActionResult<int> Update([FromBody] Person person)
         {
             return Ok(_repository.Update(person));
         }

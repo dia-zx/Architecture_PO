@@ -1,5 +1,5 @@
-﻿using Lesson10.Servises.Repositories.PersonsRepository.Model;
-using Lesson10.Servises.Repositories.ToDoReRepository.Model;
+﻿using Lesson11.Servises.Repositories.PersonsRepository.Model;
+using Lesson11.Servises.Repositories.ToDoReRepository.Model;
 using Microsoft.Data.Sqlite;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
