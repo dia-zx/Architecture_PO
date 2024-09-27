@@ -70,7 +70,7 @@ public class PersonsRepository : IPersonsRepository
             Person item = new()
             {
                 Id = reader.GetInt32(0),
-                Name = reader.GetString(2),
+                Name = reader.GetString(1),
             };
             return item;
         }
