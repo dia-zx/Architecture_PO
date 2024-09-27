@@ -49,8 +49,8 @@
                         </DockPanel>
 
                         <DockPanel Margin="3">
-                            <Button Content="AddPerson"/>
-                            <TextBox/>
+                            <Button Content="AddPerson" Command="{Binding AddPerson}"/>
+                            <TextBox Text="{Binding AddPersonString}"/>
                         </DockPanel>
                     </StackPanel>
                     <DataGrid ItemsSource="{Binding Persons}">
