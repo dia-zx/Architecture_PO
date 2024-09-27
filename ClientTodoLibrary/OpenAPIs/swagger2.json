@@ -82,7 +82,7 @@
         }
       }
     },
-    "/Persons/Get": {
+    "/Persons/DeleteById": {
       "delete": {
         "tags": [
           "Persons"

@@ -58,5 +58,19 @@ class ToDoClientModel
         return _client.AddAsync(person).Result;
     }
 
+    public int DeleteByIDPerson(int id)
+    {
+        if (_client == null) return 0;
+        try
+        {
+            return _client.DeleteAsync(id).Result;
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.Message);
+        }
+        return 0;
+    }
+
 }
 

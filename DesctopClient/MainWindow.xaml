@@ -44,13 +44,18 @@
                         <Button  Content="GetAll" Command="{Binding GetAllPersons}" Height="20"></Button>
                         
                         <DockPanel Margin="3">
-                            <Button Content="GetById" DockPanel.Dock="Left" Command="{Binding GetById}"></Button>
+                            <Button Content="GetById" DockPanel.Dock="Left" Command="{Binding GetPersonById}"></Button>
                             <TextBox Text="{Binding PersonID_GetByID}"></TextBox>
                         </DockPanel>
 
                         <DockPanel Margin="3">
                             <Button Content="AddPerson" Command="{Binding AddPerson}"/>
                             <TextBox Text="{Binding AddPersonString}"/>
+                        </DockPanel>
+
+                        <DockPanel Margin="3">
+                            <Button Content="DeleteById" DockPanel.Dock="Left" Command="{Binding DeletePersonById}"></Button>
+                            <TextBox Text="{Binding PersonID_DeleteByID}"></TextBox>
                         </DockPanel>
                     </StackPanel>
                     <DataGrid ItemsSource="{Binding Persons}">

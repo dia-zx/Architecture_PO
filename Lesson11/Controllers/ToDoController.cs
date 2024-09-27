@@ -31,7 +31,7 @@ namespace Lesson11.Controllers
         }
 
         [HttpDelete("Delete")]
-        public ActionResult<int> Get([FromQuery] int id)
+        public ActionResult<int> Delete([FromQuery] int id)
         {               
             return Ok(_repository.Delete(id));
         }

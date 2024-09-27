@@ -31,7 +31,7 @@ class MainVindowViewModel : ViewModel
         get => new DirectCommand((p) => { Persons = new ObservableCollection<Person>(_model.GetAllPersons()); }, (p) => _model.IsConnected);
     }
 
-    public ICommand GetById
+    public ICommand GetPersonById
     {
         get => new DirectCommand((p) =>
         {
@@ -51,18 +51,25 @@ class MainVindowViewModel : ViewModel
         }, (p) => _model.IsConnected);
     }
 
-    private string _AddPersonString;
-    public string AddPersonString
+    public ICommand DeletePersonById
     {
-        get => _AddPersonString; set => Set(ref _AddPersonString, value);
+        get => new DirectCommand((p) =>
+        {
+            if( _model.DeleteByIDPerson(_PersonID_DeleteByID) == 0) return;
+            GetAllPersons.Execute(null);
+        }, (p) => _model.IsConnected);
     }
 
-
+    private string _AddPersonString;
+    public string AddPersonString { get => _AddPersonString; set => Set(ref _AddPersonString, value); }
 
     private ObservableCollection<Person> _Persons = new ObservableCollection<Person>();
     public ObservableCollection<Person> Persons { get => _Persons; set => Set(ref _Persons, value); }
 
     private int _PersonID_GetByID = 0;
     public int PersonID_GetByID { get => _PersonID_GetByID; set => Set(ref _PersonID_GetByID, value); }
+
+    private int _PersonID_DeleteByID = 0;
+    public int PersonID_DeleteByID { get => _PersonID_DeleteByID; set => Set(ref _PersonID_DeleteByID, value); }
 }
 
