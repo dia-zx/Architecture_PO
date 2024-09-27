@@ -63,7 +63,7 @@ class ToDoClientModel
         if (_client == null) return 0;
         try
         {
-            return _client.DeleteAsync(id).Result;
+            return _client.DeleteByIdAsync(id).Result;
         }
         catch (Exception ex)
         {

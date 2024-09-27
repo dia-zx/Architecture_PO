@@ -58,7 +58,7 @@
                             <TextBox Text="{Binding PersonID_DeleteByID}"></TextBox>
                         </DockPanel>
                     </StackPanel>
-                    <DataGrid ItemsSource="{Binding Persons}">
+                    <DataGrid ItemsSource="{Binding Persons}" CanUserAddRows="False" IsReadOnly ="True" RowBackground="LightGray" AlternatingRowBackground="White">
 
                     </DataGrid>
                 </Grid>
