@@ -57,7 +57,9 @@
                             <Button Content="DeleteById" DockPanel.Dock="Left" Command="{Binding DeletePersonById}"></Button>
                             <TextBox Text="{Binding PersonID_DeleteByID}"></TextBox>
                         </DockPanel>
+                        <Button Content="ssdsd" Command="{Binding CloseXX}"/>
                     </StackPanel>
+                    
                     <DataGrid ItemsSource="{Binding Persons}" CanUserAddRows="False" IsReadOnly ="True" RowBackground="LightGray" AlternatingRowBackground="White">
 
                     </DataGrid>

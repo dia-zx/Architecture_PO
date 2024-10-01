@@ -1,5 +1,6 @@
 ﻿using ClientTodoLibraryNamespace;
 using DesctopClient.Commands;
+using DesctopClient.Commands.Base;
 using DesctopClient.Models;
 using DesctopClient.ViewModels.Base;
 using System;
@@ -60,6 +61,7 @@ class MainVindowViewModel : ViewModel
         }, (p) => _model.IsConnected);
     }
 
+    
     private string _AddPersonString;
     public string AddPersonString { get => _AddPersonString; set => Set(ref _AddPersonString, value); }
 
